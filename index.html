@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Weather App</title>
+</head>
+<body>
+    <header>
+        <div class="location">
+            <img src="/assets/img/iconsWeather/map.svg" alt="Location"><input type="text" id="location--first" placeholder="Enter a city">
+            <select name="location" id="location--saved">
+                <option value="noSelect"></option>
+                <!--Ajout d'option avec le localStorage-->
+            </select>
+        </div>
+        <div class="today--main">
+            <!--Contenu généré via JS-->
+            <img src="/assets/img/iconsWeather/day/DaySun.svg" alt="Soleil">
+            <p class="today--temperature">25°C</p>
+            <h1 class="today--precipitation">Sun</h1>
+            <p class="today--minmax">Max. : 25°C   Min. : 18°C</p>
+            <div class="today--other">
+                <div>
+                    <span class="material-symbols-outlined">rainy_light</span><p>18%</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">humidity_high</span><p></p>67%</p>
+                </div>
+                <div>
+                    <span class="material-symbols-outlined">air
+                    </span><p></p>25km/h</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="today--hourByHour">
+            <!--Contenu généré via JS-->
+            <div class="today__header">
+                <h2>Today</h2>
+                <p>Mar,10</p>
+            </div>
+            <hr>
+            <div class="today__main">
+                <div class="today--hour">
+                    <p>20°C</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <p>15h00</p>
+                </div>
+                <div class="today--hour">
+                    <p>21°C</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <p>16h00</p>
+                </div>
+                <div class="today--hour">
+                    <p>20°C</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <p>17h00</p>
+                </div>
+                <div class="today--hour">
+                    <p>19°C</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <p>18h00</p>
+                </div>
+            </div>
+        </div>
+        <div class="forecast">
+            <!--Contenu généré via JS-->
+            <div class="forecast__header">
+                <h2>Next Forecast</h2>
+                <p><span class="material-symbols-outlined">calendar_month</span></p>
+            </div>
+            <hr>
+            <div class="forecast__main">
+                <div class="forecast--day">
+                    <p>Mon</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <div>
+                        <p class="maxTemperature">20°C</p>
+                        <p class="minTemperature">15°C</p>
+                    </div>
+                </div>
+                <div class="forecast--day">
+                    <p>Tue</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <div>
+                        <p class="maxTemperature">20°C</p>
+                        <p class="minTemperature">15°C</p>
+                    </div>
+                </div>
+                <div class="forecast--day">
+                    <p>Wed</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <div>
+                        <p class="maxTemperature">20°C</p>
+                        <p class="minTemperature">15°C</p>
+                    </div>
+                </div>
+                <div class="forecast--day">
+                    <p>Thu</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <div>
+                        <p class="maxTemperature">20°C</p>
+                        <p class="minTemperature">15°C</p>
+                    </div>
+                </div>
+                <div class="forecast--day">
+                    <p>Fri</p>
+                    <img src="assets/img/iconsWeather/little/Sun.svg" alt="Sun">
+                    <div>
+                        <p class="maxTemperature">20°C</p>
+                        <p class="minTemperature">15°C</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>
