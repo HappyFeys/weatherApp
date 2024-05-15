@@ -11,7 +11,7 @@ export function dayForecast(city) {
         city= input.value
         Set("city", city)
     }
-    let QUERY_URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    let QUERY_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     fetch(QUERY_URL)
         .then((response) => response.json())
         .then((json) => {
@@ -84,7 +84,7 @@ export function switchMode(city) {
     console.log(now);
     
     const API_KEY = "84991b6146769bdc92f5e3eacd0ff7a5";
-    let QUERY_URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    let QUERY_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     fetch(QUERY_URL)
     .then((response) => response.json())
         .then((json) => {

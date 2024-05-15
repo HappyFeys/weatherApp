@@ -8,7 +8,7 @@ const hourByHour = document.querySelector(".today__main");
 export function hourForecast(city) {
     getCoord(city)
         .then(({ lat, lon }) => {
-            let QUERY_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+            let QUERY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
             return fetch(QUERY_URL);
         })
         .then((response) => response.json())

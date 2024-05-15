@@ -9,7 +9,7 @@ const nextDay = document.querySelector(".forecast__main")
 export function nextDayForecast(city) {
     getCoord(city)
         .then(({ lat, lon }) => {
-            let QUERY_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+            let QUERY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
             return fetch(QUERY_URL);
         })
         .then((response) => response.json())
@@ -42,7 +42,7 @@ export function nextDayForecast(city) {
 
 export function getCoord(city) {
     return new Promise((resolve, reject) => {
-        let QUERY_URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        let QUERY_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
         fetch(QUERY_URL)
             .then((response) => response.json())
             .then((json) => {

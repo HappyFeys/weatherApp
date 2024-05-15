@@ -8,7 +8,7 @@
   --font: #fff;
   --backgroundLight: #10408463;
   --backgroundNight: #001026;
-  --backgroundMain: #fff;
+  --backgroundMain: linear-gradient(150deg, rgba(41,178,221,1) 0%, rgba(51,170,221,1) 47%, rgba(45,200,234,1) 100%);
 }
 
 body {
