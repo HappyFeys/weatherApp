@@ -1,5 +1,6 @@
 import { Get, Set } from "./LocalStorage.js";
 import { generateElement, createDiv, resetHTML, generateImg } from "./generateElement.js";
+import { switchDay } from "./hourForecast.js";
 
 const API_KEY = "84991b6146769bdc92f5e3eacd0ff7a5"
 let input = document.querySelector("#location--first")
@@ -14,7 +15,24 @@ export function nextDayForecast(city) {
         .then((response) => response.json())
         .then((json) => {
             console.log(json);
-            // console.log(json.);
+            let x = 0
+            for (let i = 0; i < json.list.length; i++) {
+                let timestampConvert = new Date((json.list[i].dt)*1000)
+                let hour = timestampConvert.getHours()
+                let day = timestampConvert.getDay()
+                let dayString = switchDay(day)
+                if ((hour-2)==12) {
+                    createDiv(nextDay,"forecast--day")
+                    let forecastDay = document.querySelectorAll(".forecast--day")
+                    generateElement("p",dayString, forecastDay[x])
+                    generateImg(`https://openweathermap.org/img/wn/${json.list[i].weather[0].icon}.png`,"icon",forecastDay[x])
+                    createDiv(forecastDay[x],"temp")
+                    const temp= document.querySelectorAll(".temp")
+                    generateElement("p", `${Math.floor(json.list[i].main.temp_max)}°C`,temp[x],"maxTemperature")
+                    generateElement("p", `${Math.floor(json.list[i].main.temp_min)}°C`,temp[x],"minTemperature")
+                    x++
+                }
+            }
         })
         .catch((error) => {
             console.log("Une erreur s'est produite !", error);

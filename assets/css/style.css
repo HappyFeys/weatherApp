@@ -147,6 +147,8 @@ main .forecast .forecast__main img {
 main .forecast .forecast__main .forecast--day {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+  align-items: center;
   margin: 10px 0;
   padding: 0 20px;
 }
@@ -159,4 +161,7 @@ main .forecast .forecast__main .forecast--day div p {
 }
 main .forecast .forecast__main .forecast--day div .minTemperature {
   color: rgb(81, 80, 80);
+}
+main .forecast .forecast__main .forecast--day img {
+  width: 60px;
 }
