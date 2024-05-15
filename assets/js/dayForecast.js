@@ -1,5 +1,5 @@
 import { Get, Set } from "./LocalStorage.js";
-import { generateElement, createDiv, resetHTML, generateImg } from "./generateElement.js";
+import { generateElement, createDiv, resetHTML, generateImg, generateImgInsertAdjacentElement } from "./generateElement.js";
 import { nextDayForecast } from "./nextDayForecast.js";
 
 const API_KEY = "84991b6146769bdc92f5e3eacd0ff7a5"
@@ -17,7 +17,6 @@ export function dayForecast(city) {
         .then((json) => {
             console.log(json);
         switchMode(city)
-        switchImage(json.weather[0].main)
         generateElement("h1", json.name, todayMain)
         generateElement("p", `${Math.floor(json.main.temp)}°C`, todayMain, "today--temperature");
         generateElement("p", json.weather[0].main,todayMain,"today--precipitation");
@@ -54,26 +53,25 @@ input.addEventListener("keyup", (e)=>{
     }
 })
 
-function switchImage(json) {
-    switch (json) {
+function switchImage(weather, isDay) {
+    switch (weather) {
         case "Clouds":
-            generateImg("/assets/img/iconsWeather/day/DayClouds.svg", "Clouds", todayMain)
+            generateImgInsertAdjacentElement(isDay ? "/assets/img/iconsWeather/day/DayClouds.svg" : "/assets/img/iconsWeather/night/NightClouds.svg", "Clouds", todayMain,"afterbegin");
             break;
         case "Rain":
-            generateImg("/assets/img/iconsWeather/day/DayRain.svg", "Rain", todayMain)
+            generateImgInsertAdjacentElement(isDay ? "/assets/img/iconsWeather/day/DayRain.svg" : "/assets/img/iconsWeather/night/NightRain.svg", "Rain",todayMain, "afterbegin");
             break;
         case "Snow":
-            generateImg("/assets/img/iconsWeather/day/DaySnow.svg", "Snow", todayMain)
+            generateImgInsertAdjacentElement(isDay ? "/assets/img/iconsWeather/day/DaySnow.svg" : "/assets/img/iconsWeather/night/NightSnow.svg", "Snow", todayMain,"afterbegin");
             break;
         case "Thunderstorm":
-            generateImg("/assets/img/iconsWeather/day/DayStorm.svg", "Thunderstorm", todayMain)
+            generateImgInsertAdjacentElement(isDay ? "/assets/img/iconsWeather/day/DayStorm.svg" : "/assets/img/iconsWeather/night/NightStorm.svg", "Thunderstorm", todayMain,"afterbegin");
             break;
         case "Atmosphere":
-            generateImg("/assets/img/iconsWeather/day/DayWind.svg", "Squall", todayMain)
+            generateImgInsertAdjacentElement(isDay ? "/assets/img/iconsWeather/day/DayWind.svg" : "/assets/img/iconsWeather/night/NightWind.svg", "Squall", todayMain,"afterbegin");
             break;
-    
         default:
-            generateImg("/assets/img/iconsWeather/day/DayWind.svg", "Sunny Day", todayMain)
+            generateImgInsertAdjacentElement(isDay ? "/assets/img/iconsWeather/day/DaySun.svg" : "/assets/img/iconsWeather/night/NightMoon.svg", "Sunny Day", todayMain,"afterbegin");
             break;
     }
 }
@@ -93,10 +91,9 @@ export function switchMode(city) {
             let sunrise = json.sys.sunrise*1000
             let sunset = json.sys.sunset*1000
             let isDay = now>sunrise && now<sunset
-            if (isDay) {
-                document.documentElement.style.setProperty("--backgroundMain", dayMode)
-            } else {
-                document.documentElement.style.setProperty("--backgroundMain", nightMode)
-            }
+            console.log(isDay);
+            isDay? document.documentElement.style.setProperty("--backgroundMain", dayMode) : document.documentElement.style.setProperty("--backgroundMain", nightMode)
+            switchImage(json.weather[0].main, isDay)
+
         })
 }

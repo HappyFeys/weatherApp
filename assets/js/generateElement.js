@@ -23,3 +23,11 @@ export function generateImg(src, alt, section, className) {
     if(className) img.classList.add(className)
     section.appendChild(img)
 }
+
+export function generateImgInsertAdjacentElement(src, alt, section, position, className) {
+    let img = document.createElement("img")
+    img.src = src
+    img.setAttribute("alt", alt)
+    if(className) img.classList.add(className)
+    section.insertAdjacentElement(position, img)
+}
