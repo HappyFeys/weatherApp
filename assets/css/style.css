@@ -8,12 +8,13 @@
   --font: #fff;
   --backgroundLight: #10408463;
   --backgroundNight: #001026;
+  --backgroundMain: #fff;
 }
 
 body {
   font-family: "Montserrat", sans-serif;
   color: var(--font);
-  background: linear-gradient(150deg, rgb(41, 178, 221) 0%, rgb(51, 170, 221) 47%, rgb(45, 200, 234) 100%);
+  background: var(--backgroundMain);
   height: 100%;
 }
 

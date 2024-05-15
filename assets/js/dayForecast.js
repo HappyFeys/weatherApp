@@ -7,12 +7,11 @@ const todayMain = document.querySelector(".today--main")
 let input = document.querySelector("#location--first")
 
 export function dayForecast(city) {
-    let QUERY_URL;
     if(input.value!==""){
         city= input.value
         Set("city", city)
     }
-    QUERY_URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    let QUERY_URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     fetch(QUERY_URL)
         .then((response) => response.json())
         .then((json) => {
