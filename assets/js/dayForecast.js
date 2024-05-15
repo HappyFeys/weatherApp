@@ -1,5 +1,6 @@
 import { Get, Set } from "./LocalStorage.js";
 import { generateElement, createDiv, resetHTML, generateImg } from "./generateElement.js";
+import { nextDayForecast } from "./nextDayForecast.js";
 
 const API_KEY = "84991b6146769bdc92f5e3eacd0ff7a5"
 const todayMain = document.querySelector(".today--main")
@@ -47,7 +48,8 @@ export function dayForecast(city) {
 input.addEventListener("keyup", (e)=>{
     if(e.code ==="Enter"){
         resetHTML(".today--main")
-        dayForecast(e.target.value)      
+        dayForecast(e.target.value)
+        nextDayForecast(e.target.value)     
     }
 })
 

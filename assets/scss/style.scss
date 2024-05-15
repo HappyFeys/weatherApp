@@ -31,6 +31,7 @@ body{
     font-family: "Montserrat", sans-serif;
     color:var(--font);
     background: $linearLightmode;
+    height: 100%;
 }
 
 // Header
@@ -123,7 +124,7 @@ main{
             width: 100%;
             padding: 20px 0;
             img{
-                width: 30px;
+                width: 60px;
                 margin: 10px 0;
             }
             .today--hour{
@@ -172,6 +173,9 @@ main{
                     p{
                         margin-left: 10px;
                         font-size: 12px;
+                    }
+                    .minTemperature{
+                        color:rgb(81, 80, 80)
                     }
                 }
             }
