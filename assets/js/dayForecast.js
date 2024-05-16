@@ -7,12 +7,11 @@ const API_KEY = "84991b6146769bdc92f5e3eacd0ff7a5"
 const todayMain = document.querySelector(".today--main")
 let input = document.querySelector("#location--first")
 
-let arrayCity = []
+
 export function dayForecast(city) {
     if(input.value!==""){
         city= input.value
-        arrayCity.push(city)
-        Set("city", arrayCity)
+        Set("city", city)
     }
     let QUERY_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
     fetch(QUERY_URL)
@@ -54,7 +53,8 @@ input.addEventListener("keyup", (e)=>{
         resetHTML(".today--main")
         resetHTML(".forecast__main")
         dayForecast(e.target.value)
-        nextDayForecast(e.target.value)     
+        nextDayForecast(e.target.value)
+        input.value=""    
     }
 })
 
