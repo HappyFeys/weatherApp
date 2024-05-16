@@ -1,7 +1,7 @@
 /**
  * 
- * @param {Nom de la zone de stockage: exemple ( name )} name 
- * @param {Valeur initial, si aucune n'est present c'est celle qui sera stocker de base (Array,number,string,object,...): exemple ( Jean-mich )} ini
+ * @param {* Nom de la zone de stockage: exemple ( name )} name 
+ * @param {* Valeur initial, si aucune n'est present c'est celle qui sera stocker de base (Array,number,string,object,...): exemple ( Jean-mich )} ini
  * @returns 
  */
 export function Get(name, ini) {
@@ -17,8 +17,8 @@ export function Get(name, ini) {
 
 /**
  * 
- * @param {Nom de la zone de stockage: exemple ( name )} name 
- * @param {Valeur a stocker (Array,number,string,object,...): exemple ( Jean-mich )} value 
+ * @param {* Nom de la zone de stockage: exemple ( name )} name 
+ * @param {* Valeur a stocker (Array,number,string,object,...): exemple ( Jean-mich )} value 
  * @returns 
  */
 export function Set(name, value) {

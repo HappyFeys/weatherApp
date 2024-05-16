@@ -160,6 +160,11 @@ main .forecast .forecast__main .forecast--day div p {
   margin-left: 10px;
   font-size: 12px;
 }
+@media only screen and (min-width: 768px) {
+  main .forecast .forecast__main .forecast--day div p {
+    font-size: 16px;
+  }
+}
 main .forecast .forecast__main .forecast--day div .minTemperature {
   color: rgb(81, 80, 80);
 }
