@@ -1,8 +1,8 @@
-## Weather App
+# Weather App
 
 # La mission
 
-Le but de ce projet était de réaliser une petite Weather App
+Sur 4 jours, le but de ce projet était de réaliser une petite Weather App grâce à un appel API d'OpenWeather.
 
 Il fallait que la personne puisse rentrer une ville de son choix et obtenir la météo de l'instant ainsi que les 5 jours suivants.
 
