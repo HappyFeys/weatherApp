@@ -1,6 +1,8 @@
 import { Get, Set } from "./LocalStorage.js";
 import { generateElement, createDiv, resetHTML, generateImg } from "./generateElement.js";
 import { switchDay } from "./hourForecast.js";
+// import { Chart} from '../../node_modules/chart.js/auto/auto.js'
+
 
 const API_KEY = "84991b6146769bdc92f5e3eacd0ff7a5"
 let input = document.querySelector("#location--first")
@@ -56,3 +58,49 @@ export function getCoord(city) {
     });
 }
 
+
+
+export async function getTemperature(city) {
+    getCoord(city)
+        .then(({ lat, lon }) => {
+            let QUERY_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+            return fetch(QUERY_URL);
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            const labels = [];
+            const temperature = [];
+
+            json.list.forEach(entry => {
+                const dateTime = new Date(entry.dt * 1000);
+                labels.push(`${dateTime.getDate()}/${dateTime.getMonth() + 1} ${(dateTime.getHours()<10)? "0"+dateTime.getHours(): dateTime.getHours() }:00`);
+                temperature.push(entry.main.temp);
+            })
+            const ctx = document.querySelector("#acquisition").getContext('2d');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Températures (°C)',
+                    data: temperature,
+                    backgroundColor: '#FF0000',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        })
+        .catch((error) => {
+            console.log("Une erreur s'est produite !", error);
+        });
+}

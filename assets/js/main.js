@@ -1,6 +1,6 @@
 import { Get, Set } from "./LocalStorage.js";
 import { dayForecast } from "./dayForecast.js";
-import { nextDayForecast } from "./nextDayForecast.js";
+import { nextDayForecast, getTemperature } from "./nextDayForecast.js";
 import { hourForecast, GetDate } from "./hourForecast.js";
 import { getCoordinates } from "./geolocalisation.js";
 
@@ -24,4 +24,5 @@ function executeWeatherForecast(city) {
     dayForecast(city)
     hourForecast(city)
     nextDayForecast(city)
+    getTemperature(city)
 }
