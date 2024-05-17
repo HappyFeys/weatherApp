@@ -1,7 +1,6 @@
 import { Get, Set } from "./LocalStorage.js";
 import { generateElement, createDiv, resetHTML, generateImg } from "./generateElement.js";
 import { switchDay } from "./hourForecast.js";
-// import { Chart} from '../../node_modules/chart.js/auto/auto.js'
 
 
 const API_KEY = "84991b6146769bdc92f5e3eacd0ff7a5"
@@ -73,7 +72,7 @@ export async function getTemperature(city) {
 
             json.list.forEach(entry => {
                 const dateTime = new Date(entry.dt * 1000);
-                labels.push(`${dateTime.getDate()}/${dateTime.getMonth() + 1} ${(dateTime.getHours()<10)? "0"+dateTime.getHours(): dateTime.getHours() }:00`);
+                labels.push(`${dateTime.getDate()}/${dateTime.getMonth() + 1} ${(dateTime.getHours()<10)? "0"+dateTime.getHours()-2: dateTime.getHours()-2 }:00`);
                 temperature.push(entry.main.temp);
             })
             const ctx = document.querySelector("#acquisition").getContext('2d');
